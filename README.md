@@ -4,7 +4,9 @@ Bem-vindo(a) à nossa plataforma de criação e gerenciamento de posts! Aqui, vo
 
 Link: https://diaryme.onrender.com/login
 
-
+<a href='https://github.com/Carlos-Guilherme/Diaryme/edit/main/README.md#objetivo'>Objetivo</a> | 
+<a href='https://github.com/Carlos-Guilherme/Diaryme/edit/main/README.md#seguran%C3%A7a-e-privacidade'>Segurança e privacidade</a>
+#
 Nosso site é desenvolvido com Flask, uma poderosa ferramenta para a criação de aplicações web, e conta com recursos como o banco de dados SQLite e a biblioteca Flask-SQLalchemy, para garantir a segurança e o armazenamento adequado de suas informações.
 
 Ao se cadastrar, você terá acesso a uma página de perfil onde poderá visualizar seus próprios posts, criar novos e editar ou excluir os que já foram publicados. Você também pode editar o seu próprio perfil, trocando o nome de usuário e a foto de perfil.
