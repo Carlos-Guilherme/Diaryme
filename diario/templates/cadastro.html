@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='cadastro.css')}}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    {% include 'navbar.html' %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show m-3 p-3" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+    
+        <div class="container mt-5 text-white area">
+            
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                
+                <form action="" method="post" id="form" class="mb-md-5 mt-md-4 pb-5 card bg-dark text-white col-10 col-md-8 col-lg-6 col-xl-5" style="border-radius: 10px; background-color:  rgba(0, 0, 0, 0.233);">
+                    {{ form_criar_conta.csrf_token }}
+                    <h1 class="m-3">Cadastro</h1>
+                    <hr>
+                    <fieldset>
+                        
+                        
+                        <div class="form-group col-md-9 mx-auto">
+                            {{ form_criar_conta.username.label(class='form-control-label') }}
+                            {% if form_criar_conta.username.errors %}
+                                {{ form_criar_conta.username(class='form-control is-invalid') }}
+                            <div class="invalid-feedback">
+                                {% for erro in form_criar_conta.username.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_criar_conta.username(class='form-control') }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group col-md-9 mx-auto">
+                            {{ form_criar_conta.senha.label(class='form-control-label') }}
+                            {{ form_criar_conta.senha(class='form-control') }}
+                        </div>
+                        <div class="form-group col-md-9 mx-auto">
+                            {{ form_criar_conta.confirm_senha.label(class='form-control-label') }}
+                            {% if form_criar_conta.confirm_senha.errors %}
+                                {{ form_criar_conta.confirm_senha(class='form-control is-invalid') }}
+                            <div class="invalid-feedback">
+                                {% for erro in form_criar_conta.confirm_senha.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_criar_conta.confirm_senha(class='form-control') }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="d-flex justify-content-center">
+                        {{ form_criar_conta.btn_submit(class='btn btn-outline-light mt-3 col-md-6 mx-auto') }}
+                    </div>
+                    
+                </form>
+            </div>
+            
+        </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='criarpost.css')}}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Criar</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show m-3 p-3" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+    <div class="container d-flex justify-content-center text-white">
+        {% if current_user.is_authenticated %}
+        <form action="" method="post" id="form" class="col-10 m-5 p-5 bg-dark" style="border-radius: 10px; background-color: rgba(0, 0, 0, 0.233);">
+            <h1 style="text-align: center;">Criar</h1> <br>
+            <fieldset>
+                <div class="form-group">
+                    {{ form.csrf_token }}
+                    {{ form.titulo.label(class='form-control-label') }}
+                    {% if form.titulo.errors %}
+                        {{ form.titulo(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for erro in form.titulo.errors %}
+                            {{ erro }}
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.titulo(class='form-control') }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.corpo.label(class='form-control-label') }}
+                    {% if form.corpo.errors %}
+                        {{ form.corpo(class='form-control is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for erro in form.corpo.errors %}
+                            {{ erro }}
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.corpo(class='form-control') }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            {{ form.btn_submit(class='btn btn-outline-light mt-2 mx-auto') }}
+        </form>
+        {% else %}
+        <div class="container">
+            <h1 style="text-align: center">
+              Você não está logado, faça
+              <a href="{{ url_for('login') }}">login</a> para continuar
+            </h1>
+          </div>
+        {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

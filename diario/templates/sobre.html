@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Sobre</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='sobre.css')}}" />
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="card bg-dark text-white mt-2 pt-3 col-9" id="div">
+                <h1>Sobre</h1>
+                <hr>
+                <h2>Para visitantes:</h2>
+                <p>Bem-vindo(a) à nossa plataforma de criação e gerenciamento de posts! Aqui, você pode exercitar a escrita de forma terapêutica e reflexiva, em um ambiente seguro e privado.</p>
+
+                <p>Nosso site é desenvolvido com Flask, uma poderosa ferramenta para a criação de aplicações web, e conta com recursos como o banco de dados SQLite e a biblioteca Flask-SQLalchemy, para garantir a segurança e o armazenamento adequado de suas informações. </p>
+                    
+                <p>Ao se cadastrar, você terá acesso a uma página de perfil onde poderá visualizar seus próprios posts, criar novos e editar ou excluir os que já foram publicados. Você também pode editar o seu próprio perfil, trocando o nome de usuário e a foto de perfil. </p>
+                    
+                <p>Para tornar a interface mais amigável e responsiva, utilizamos a ferramenta Bootstrap, que ajuda na organização visual das páginas e na adaptação a diferentes dispositivos. </p>
+                    
+                <p>Além disso, você receberá feedback instantâneo após cada ação realizada, graças às nossas mensagens flash. Tudo isso para tornar sua experiência ainda mais prazerosa e agradável. </p>
+                    
+                <p>Então, se você busca uma plataforma para a prática da escrita e reflexão, está no lugar certo! Venha exercitar a sua criatividade e conhecer pessoas que valorizam a arte de escrever. Cadastre-se agora mesmo e comece a criar seus posts!</p>
+                <h2>Para contratadores:</h2>
+                <p>Nossa plataforma foi desenvolvida com as mais modernas tecnologias para oferecer aos usuários uma experiência de uso única e intuitiva. 
+                O site foi criado com a linguagem de programação Python e utiliza o framework Flask para gerenciar as requisições HTTP e para renderizar as páginas HTML. 
+                Para armazenar as informações dos usuários e dos posts, utilizamos o banco de dados SQLite em conjunto com a biblioteca Flask-SQLAlchemy, garantindo um alto nível de segurança e confiabilidade dos dados. </p>
+                <h3>Privacidade:</h3>
+                <p>Uma das principais preocupações durante o desenvolvimento foi garantir a privacidade dos usuários. 
+                Por isso, criamos uma lógica de programação que impede o acesso aos posts e ao perfil de outros usuários, garantindo que apenas o criador do post possa visualizar e editá-lo. 
+                Além disso, implementamos uma proteção contra a exclusão de posts por usuários que não sejam seus criadores, garantindo a integridade dos dados. </p>
+
+                <p>No caso da nossa plataforma, utilizamos o pacote Flask-Bcrypt para gerenciar a criptografia das senhas dos usuários:
+                Quando um novo usuário se registra na plataforma, a senha fornecida é criptografada antes de ser armazenada no banco de dados. 
+                Para isso, utilizamos uma função hash que é aplicada à senha fornecida pelo usuário. Essa função gera um hash de 60 caracteres que é armazenado no banco de dados no lugar da senha em si. Isso significa que, mesmo que um invasor tenha acesso ao banco de dados, ele não será capaz de ler as senhas reais dos usuários.</p>
+
+                <p>Além disso, utilizamos validações de login para garantir que apenas usuários registrados possam acessar a plataforma. 
+                Para isso, criamos um formulário de login com duas etapas de validação. A primeira etapa de validação é a validação do formulário em si. Isso garante que os campos do formulário sejam preenchidos corretamente antes que a validação da senha seja feita.</p>
+
+                <p>Na segunda etapa de validação, verificamos se a senha fornecida pelo usuário está correta. Para isso, comparamos o hash da senha fornecida pelo usuário com o hash armazenado no banco de dados. Se esses hashes forem iguais, o usuário é autenticado com sucesso e redirecionado para a página inicial da plataforma.</p>
+                
+                <h3>Aquitetura:</h3>
+                <p>Os formulários da plataforma foram criados com a tecnologia WTForms, que permite uma validação fácil e segura dos dados inseridos pelos usuários. 
+                Além disso, utilizamos o Bootstrap para dar um toque de estilo às páginas, tornando a interface mais amigável e responsiva. </p>
+
+                <p>As mensagens flash foram implementadas de forma a dar um feedback rápido e intuitivo ao usuário após cada ação realizada. 
+                    Essa funcionalidade foi desenvolvida com o auxílio do Flask, que oferece uma maneira simples e eficiente de gerenciá-las. </p>
+
+                <h3>Obetivo:</h3>
+                <p>O objetivo da plataforma é oferecer aos usuários uma ferramenta para exercitar a escrita de forma terapêutica e reflexiva, em um ambiente seguro e privado. 
+                Para isso, seguimos todas as boas práticas de programação, garantindo a qualidade do código e a manutenibilidade da plataforma. </p>
+                    
+                <p>Nosso compromisso é oferecer aos usuários a melhor experiência de uso possível, garantindo a segurança e privacidade de seus dados e o máximo de praticidade e facilidade na utilização da plataforma.</p>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
