@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, request, flash, abort
 from diario.forms import Form_criar_conta, Form_login, Form_editar_perfil, Form_criar_post, Form_editar_post
 from diario import app, database, bcrypt
 from diario.models import Usuario, Post
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 import secrets
 import os
 from PIL import Image
@@ -44,14 +44,12 @@ def cadastro():
         return render_template('cadastro.html', form_criar_conta=form_criar_conta)
 
 @app.route('/perfil', methods=['POST', 'GET'])
+@login_required
 def perfil():
-    if current_user.is_authenticated:
-        posts = Post.query.order_by(Post.id.desc())
-        num_posts = Post.query.filter_by(autor=current_user).count()
-        foto_perfil = url_for('static', filename=f'fotos_perfil/{current_user.foto_perfil}')
-        return render_template('perfil.html', foto_perfil=foto_perfil, posts=posts, num_posts=num_posts)
-    else:
-        abort(403)
+    posts = Post.query.order_by(Post.id.desc())
+    num_posts = Post.query.filter_by(autor=current_user).count()
+    foto_perfil = url_for('static', filename=f'fotos_perfil/{current_user.foto_perfil}')
+    return render_template('perfil.html', foto_perfil=foto_perfil, posts=posts, num_posts=num_posts)
 
 @app.route('/sair')
 def sair():
@@ -59,6 +57,7 @@ def sair():
     return redirect(url_for('index'))
 
 @app.route('/criar-post', methods=['POST', 'GET'])
+@login_required
 def criar_post():
     form = Form_criar_post()
     if form.validate_on_submit():
@@ -90,6 +89,7 @@ def salvar_imagem(imagem):
     return nome_completo
 
 @app.route('/editar-perfil', methods=['POST', 'GET'])
+@login_required
 def editar_perfil():
     form = Form_editar_perfil()
     foto_perfil = url_for('static', filename=f'fotos_perfil/{current_user.foto_perfil}')
@@ -106,6 +106,7 @@ def editar_perfil():
     return render_template('editarperfil.html', foto_perfil=foto_perfil, form=form)
 
 @app.route('/post/<post_id>', methods=['POST', 'GET'])
+@login_required
 def exibir_post(post_id):
     post = Post.query.get(post_id)
     if current_user == post.autor and current_user.is_authenticated:
@@ -125,6 +126,7 @@ def exibir_post(post_id):
 
 
 @app.route('/post/<post_id>/excluir', methods=['POST', 'GET'])
+@login_required
 def excluir_post(post_id):
     post = Post.query.get(post_id)
     if current_user == post.autor and current_user.is_authenticated:
