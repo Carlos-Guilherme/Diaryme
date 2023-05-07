@@ -6,6 +6,7 @@ Link: https://diaryme.onrender.com/login
 
 <a href='https://github.com/Carlos-Guilherme/Diaryme/edit/main/README.md#objetivo'>Objetivo</a> | 
 <a href='https://github.com/Carlos-Guilherme/Diaryme/edit/main/README.md#seguran%C3%A7a-e-privacidade'>Segurança e privacidade</a>
+<a href='https://github.com/Carlos-Guilherme/Diaryme/edit/main/README.md#limita%C3%A7%C3%B5es'>Limitações</a>
 #
 Nosso site é desenvolvido com Flask, uma poderosa ferramenta para a criação de aplicações web, e conta com recursos como o banco de dados SQLite e a biblioteca Flask-SQLalchemy, para garantir a segurança e o armazenamento adequado de suas informações.
 
@@ -36,3 +37,6 @@ Na segunda etapa de validação, verificamos se a senha fornecida pelo usuário 
 Outra boa prática utilizada na criação dos formulários foi o uso do pacote WTForms. Esse pacote nos permitiu criar formulários personalizados de uma forma simples e elegante, com validações customizáveis e mensagens de erro personalizadas.
 
 Por fim, a plataforma também utiliza a tecnologia de sessions do Flask para gerenciar a autenticação e autorização dos usuários. As sessions permitem que a plataforma mantenha o estado do usuário entre as requisições, o que é essencial para garantir que apenas usuários autenticados possam acessar as páginas protegidas.
+
+### Limitações
+Nosso site atualmente é hospedado em um plano grauito de hospedagem da Render, ou seja, nosso site suporta apenas uma conexão por vez.
